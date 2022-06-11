@@ -20,4 +20,9 @@ got to 2
 4.5 Discont exchange rate (tokens to dollars)
 5. Burn tokens after ending of discont.
 
+Home ex. 11.06.2022
+
+1. Create tests for functions
+2. Create function addDiscontToUser (description in contract)
+
 
