@@ -1,0 +1,23 @@
+1. 
+Create smart-contract
+2. 
+Write test
+3.
+Change contract 
+got to 2
+
+==== Car trader ====
+
+1. Trader stuf (admins) several owners of car shop
+2. Only admins and owner can add customers for discont
+3. Like result of this dicsont customer has to ge tokens (Trader car Token, TCT)
+    3.1 When we add customer we need to mint token for this customer depence on rate (token to dollar)
+4. In process of adding customer we need information:
+4.1 Name
+4.2 Vin code 
+4.3 Discont start date
+4.4 Discont end date
+4.5 Discont exchange rate (tokens to dollars)
+5. Burn tokens after ending of discont.
+
+
