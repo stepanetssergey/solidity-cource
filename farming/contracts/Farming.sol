@@ -41,8 +41,8 @@ contract Farming {
             Pools[_poolId].tokensPerLPToken) /
             1e12 -
             Users[msg.sender][_poolId].userReward;
-        IERCMintable _revenue_token = IERCMintable(Pools[_poolId].token);
-        IERC20 _lpToken = IERC20(lpTokenAddress);
+        IERC20Mintable _revenue_token = IERC20Mintable(Pools[_poolId].token);
+        IERC20 _lpToken = IERC20(Pools[_poolId].lpTokenAddress);
         _lpToken.transferFrom(msg.sender, address(this), _lp_tokens);
         Users[msg.sender][_poolId].amount += _lp_tokens;
         uint256 _user_reward = (Users[msg.sender][_poolId].amount *
@@ -56,7 +56,7 @@ contract Farming {
             Pools[_poolId].tokensPerLPToken) /
             1e12 -
             Users[msg.sender][_poolId].userReward;
-        IERCMintable _revenue_token = IERCMintable(Pools[_poolId].token);
+        IERC20Mintable _revenue_token = IERC20Mintable(Pools[_poolId].token);
         _revenue_token.mint(msg.sender, pending);
         IERC20 _lp_token_instance = IERC20(Pools[_poolId].lpTokenAddress);
         _lp_token_instance.transfer(msg.sender, _lp_tokens);
@@ -73,7 +73,7 @@ contract Farming {
         }
 
         uint256 blocks = block.number - Pools[_poolId].lastBlock;
-        uint256 tokensForPay = blocks * Pools[_poolId].tokensPerBlock;
+        uint256 _tokensForPay = blocks * Pools[_poolId].tokensPerBlock;
         uint256 _tokensPerLPToken = Pools[_poolId].tokensPerLPToken +
             ((_tokensForPay * 1e12) / lpTokenTotal);
         Pools[_poolId].lastBlock = block.number;
@@ -90,7 +90,7 @@ contract Farming {
             address(this)
         );
         uint256 _current_tokens_per_lp = Pools[_poolId].tokensPerLPToken +
-            (((blocks * Pools[_poolId].tokensPerBlock) / totalLPToken) * 1e12);
+            (((blocks * Pools[_poolId].tokensPerBlock) / lpTokenTotal) * 1e12);
         return
             (Users[_address][_poolId].amount * _current_tokens_per_lp) /
             1e12 -
